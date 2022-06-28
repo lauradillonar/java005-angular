@@ -13,6 +13,10 @@ export class EmpleadoService {
   constructor(private httpClient: HttpClient) { }
 
   obtenerListaDeEmpleados():Observable<Empleado[]>{
-    return this.httpClient.get<Empleado[]>(this.baseURL);
+    return this.httpClient.get<Empleado[]>(`${this.baseURL}`);
+  }
+
+  registrarEmpleado(empleado:Empleado): Observable<Object>{
+    return this.httpClient.post(`${this.baseURL}`,empleado);
   }
 }
